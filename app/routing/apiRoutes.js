@@ -1,5 +1,5 @@
 module.exports = function apiroutes(app){
-    
+
     var friends = [
         {
             name: "Hermione Granger",
@@ -13,7 +13,7 @@ module.exports = function apiroutes(app){
     app.get("/api/friends", function(req, res){
         return res.json(friends);
     })
-    app.post("/api/friends", function(req,res){
+    app.post("/api/friends", function(req,res,data){
         var newfriend = req.body;
 
         newfriend.routeName = newfriend.name.replace(/\s+/g, "").toLowerCase();
@@ -23,5 +23,6 @@ module.exports = function apiroutes(app){
         friends.push(newfriend);
         
         res.json(newfriend);
+
     })
 }
